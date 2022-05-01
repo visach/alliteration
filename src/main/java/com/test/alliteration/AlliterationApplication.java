@@ -9,7 +9,8 @@ public class AlliterationApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(AlliterationApplication.class, args);
 
-		System.out.println("Hello world!");
+		System.out.println("Hello!");
+		System.out.println("Welcome to Alliteration App");
 	}
 
 }
