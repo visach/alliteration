@@ -1,6 +1,7 @@
 package com.test.alliteration;
 
 import com.test.alliteration.objects.Analyzer;
+import com.test.alliteration.objects.StringAnalyzer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -13,36 +14,29 @@ public class AlliterationApplication {
 		System.out.println("Hello!");
 		System.out.println("Welcome to Alliteration App");
 
+
 		String easyTest = "Mike made mellow music with his new microphone";
+		String example1 = "Mike made mellow music with his new microphone";
+
 		String hardTest = "Yarvis yanked his ankle at yoga, and Yolanda yelled out in surprise.";
+		String example2 = "Yarvis yanked his ankle at yoga, and Yolanda yelled out in surprise.";
 
-		//Possible patterns
-		//String splited[] = source_.split("\\W");
-		//String splited[] = source_.split("[a-zA-Z]");
-		//String spl_[] = easyStr_.split(" ");
-
-		Analyzer analyzer = new Analyzer(easyTest);
-		System.out.println(analyzer.toString());
+		/*Analyzer analyzer = new Analyzer(easyTest);
+		System.out.println(analyzer.toString());*/
 		//Analyzer analyzer = new Analyzer(hardTest);
 
-		//Hard one
-		//String[] spl2 = Arrays.stream(hardTest.split("[^a-zA-Z]")).map(String::trim);
-		/*for (String str2: spl2)
-			System.out.println(str2);*/
+		/*Analyzer analyzer2 = new Analyzer();
+		analyzer2.SetStringToAnalyze(easyTest);
+		analyzer2.PerformAnalysis();
+		String results = analyzer2.toString();
+		System.out.println(results);*/
 
-		/*List<String> stringList = Pattern.compile(" ")
-				.splitAsStream(easyTest)
-				.map(String::trim)
-				.collect(Collectors.toList());
-		stringList.forEach(s -> System.out.println(s));
+		StringAnalyzer stringAnalyzer = new StringAnalyzer();
+		stringAnalyzer.Initialize(example1);
+		stringAnalyzer.Analyze();
 
-		Word word = new Word("prueba");
-		char c = word.FirstChar();
-		System.out.println(c);
-		*/
-
-		//easyStream.forEach(s-> System.out.println(s));
-
+		stringAnalyzer.Initialize(example2);
+		stringAnalyzer.Analyze();
 	}
 
 }

@@ -13,10 +13,20 @@ public class Analyzer {
     private String _stringToAnalyze;
     private List<String> _stringList;
     private Long _counter;
+    private Long _numberOfWords;
     private Map<String,Integer> _data = new HashMap<>();
     private Map<String,Float> _result = new HashMap<>();
     public Analyzer()
     {
+    }
+
+    public void PerformAnalysis()
+    {
+        if (_stringToAnalyze == null)
+        {
+            throw new RuntimeException("error");
+        }
+        _numberOfWords = WordCounter(_stringToAnalyze);
     }
     public Analyzer(String stringToAnalyze)
     {
