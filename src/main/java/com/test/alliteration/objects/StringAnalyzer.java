@@ -1,9 +1,6 @@
 package com.test.alliteration.objects;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -23,16 +20,17 @@ public class StringAnalyzer {
     public StringAnalyzer(){
     }
     public void Initialize(String stringReceived){
-        _stringReceived = stringReceived;
-        _numberOfWords = Stream.of(stringReceived.split(" ")).count();
-        //(?<=\s|^)[a-zA-Z]*(?=[.,;:]?\s|$)
-        //_stringList = Pattern.compile(" ")
-        _stringList = Pattern.compile(" ")
-                .splitAsStream(stringReceived)
-                .collect(Collectors.toList());
         _qtyOfEachWord = new HashMap<>();
         _percentageOfEachWord = new HashMap<>();
+        _numberOfWords = 0L;
 
+        if (!Objects.equals(stringReceived, "")) {
+            _stringReceived = stringReceived;
+            _numberOfWords = Stream.of(stringReceived.split(" ")).count();
+            _stringList = Pattern.compile(" ")
+                    .splitAsStream(stringReceived)
+                    .collect(Collectors.toList());
+        }
     }
     public void Analyze(){
         if (_numberOfWords != 0){

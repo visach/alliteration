@@ -46,7 +46,6 @@ public class AlliterationApplication {
 		stringAnalyzer.Initialize(extra);
 		stringAnalyzer.Analyze();
 		stringAnalyzer.PrintResults();
-
 		//empty string
 		extra = "";
 		System.out.println("Analyzing " + extra);
