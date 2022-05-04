@@ -9,12 +9,17 @@ public class StringAnalyzer {
     private String _stringReceived;
     private List<String> _stringList;
     private Long _numberOfWords;
-    private Map<String,Integer> _qtyOfEachWord; // = new HashMap<>();
-    private Map<String,Float> _percentageOfEachWord;// = new HashMap<>();
+    private Map<String,Integer> _qtyOfEachWord;
+    private Map<String,Float> _percentageOfEachWord;
 
     public String GetStringReceived (){return _stringReceived;}
     public Map<String,Integer> GetQuantityOfEachWord() {return _qtyOfEachWord;}
-    public Map<String,Float> GetPercentagesOfEachWord(){return _percentageOfEachWord;}
+    public Map<String,Float> GetPercentagesOfEachWord(){
+        if (_percentageOfEachWord.isEmpty()){
+            _percentageOfEachWord.put("received empty string",0F);
+        }
+        return _percentageOfEachWord;
+    }
     public Long GetNumberOfWords (){return _numberOfWords;}
 
     public StringAnalyzer(){
@@ -22,10 +27,8 @@ public class StringAnalyzer {
     public void Initialize(String stringReceived){
         _qtyOfEachWord = new HashMap<>();
         _percentageOfEachWord = new HashMap<>();
-        _numberOfWords = 0L;
-
+        _stringReceived = stringReceived;
         if (!Objects.equals(stringReceived, "")) {
-            _stringReceived = stringReceived;
             _numberOfWords = Stream.of(stringReceived.split(" ")).count();
             _stringList = Pattern.compile(" ")
                     .splitAsStream(stringReceived)
@@ -33,7 +36,7 @@ public class StringAnalyzer {
         }
     }
     public void Analyze(){
-        if (_numberOfWords != 0){
+        if (!Objects.equals(_stringReceived, "") && _stringReceived != null) {
             CalculateDistribution();
             CalculatePercentages();
         }

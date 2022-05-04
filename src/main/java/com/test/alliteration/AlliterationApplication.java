@@ -27,37 +27,8 @@ public class AlliterationApplication {
 		stringAnalyzer.Analyze();
 		stringAnalyzer.PrintResults();
 
-		System.out.println("Extra TESTS");
-		String extra = "ab ac ad ae af, ax. A, j39i40 3";
-		System.out.println("Analyzing " + extra);
-		stringAnalyzer.Initialize(extra);
-		stringAnalyzer.Analyze();
-		stringAnalyzer.PrintResults();
-		//only one character by 'word'
-		extra = "a b c d e f g h i";
-		System.out.println("Analyzing " + extra);
-		stringAnalyzer.Initialize(extra);
-		stringAnalyzer.Analyze();
-		stringAnalyzer.PrintResults();
-
-		//no azAZ characters at all
-		extra = "1 2 3 4 5";
-		System.out.println("Analyzing " + extra);
-		stringAnalyzer.Initialize(extra);
-		stringAnalyzer.Analyze();
-		stringAnalyzer.PrintResults();
-		//empty string
-		extra = "";
-		System.out.println("Analyzing " + extra);
-		stringAnalyzer.Initialize(extra);
-		stringAnalyzer.Analyze();
-		stringAnalyzer.PrintResults();
-		//only one word
-		extra = "house";
-		System.out.println("Analyzing " + extra);
-		stringAnalyzer.Initialize(extra);
-		stringAnalyzer.Analyze();
-		stringAnalyzer.PrintResults();
+		System.out.println("End of analysis. Bye.");
+		System.exit(0);
 	}
 
 }
