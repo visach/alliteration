@@ -11,7 +11,7 @@ public class StringAnalyzer {
     private String _stringReceived;
     private List<String> _stringList;
     private Long _numberOfWords;
-    private Map<String,Integer> qtyOfEachWord = new HashMap<>();
+    private Map<String,Integer> _qtyOfEachWord = new HashMap<>();
 
     public String GetStringReceived (){return _stringReceived;}
 
@@ -30,7 +30,7 @@ public class StringAnalyzer {
         String s;
         Integer counter;
         Float percentage;
-        Map<String,Integer> qtyOfEachWord = new HashMap<>();
+        //Map<String,Integer> qtyOfEachWord = new HashMap<>();
         Map<String,Float> percentageOfEachWord = new HashMap<>();
 
         System.out.println("empieza el análisis");
@@ -38,24 +38,34 @@ public class StringAnalyzer {
         for (String str: _stringList){
             s = Character.toString(str.charAt(0)).toLowerCase();
             //System.out.println(s);
-            if (qtyOfEachWord.containsKey(s)){
-                counter = qtyOfEachWord.get(s);
-                qtyOfEachWord.put(s,counter+1);
+            if (_qtyOfEachWord.containsKey(s)){
+                counter = _qtyOfEachWord.get(s);
+                _qtyOfEachWord.put(s,counter+1);
                 percentage = ((counter.floatValue()+1.0F)*100.0F)/_numberOfWords.floatValue();
                 percentageOfEachWord.put(s,percentage);
             }
             else {
-                qtyOfEachWord.put(s,1);
+                _qtyOfEachWord.put(s,1);
                 percentage = (100.0F)/_numberOfWords.floatValue();
                 percentageOfEachWord.put(s,percentage);
             }
         }
-        System.out.println(qtyOfEachWord.toString());
+        System.out.println(_qtyOfEachWord.toString());
         System.out.println(percentageOfEachWord.toString());
     }
 
-    public Map<String,Integer> GetDistribution(){
-        return null;
+    public Map<String,Integer> CalculateDistribution(){
+        String s;
+        for (String str: _stringList){
+            s = Character.toString(str.charAt(0)).toLowerCase();
+            if (_qtyOfEachWord.containsKey(s)){
+                _qtyOfEachWord.put(s,_qtyOfEachWord.get(s)+1);
+            }
+            else {
+                _qtyOfEachWord.put(s,1);
+            }
+        }
+        return _qtyOfEachWord;
     }
 
     public Map<String,Float> GetPercentages(){

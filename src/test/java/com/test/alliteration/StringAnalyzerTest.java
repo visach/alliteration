@@ -22,11 +22,11 @@ public class StringAnalyzerTest {
     }
     @Test
     void GetWordDistribution(){
-        assertEquals("{w=1, h=1, m=5, n=1}",stringAnalyzer.GetDistribution());
+        assertEquals("{w=1, h=1, m=5, n=1}",stringAnalyzer.CalculateDistribution().toString());
     }
     @Test
     void GetPercentages(){
-        assertEquals("{w=12.5, h=12.5, m=62.5, n=12.5}",stringAnalyzer.GetPercentages());
+        assertEquals("{w=12.5, h=12.5, m=62.5, n=12.5}",stringAnalyzer.GetPercentages().toString());
     }
 
 
