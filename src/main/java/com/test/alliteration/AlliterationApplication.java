@@ -1,9 +1,8 @@
 package com.test.alliteration;
 
+import com.test.alliteration.objects.StringAnalyzer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.util.stream.Stream;
 
 @SpringBootApplication
 public class AlliterationApplication {
@@ -14,22 +13,52 @@ public class AlliterationApplication {
 		System.out.println("Hello!");
 		System.out.println("Welcome to Alliteration App");
 
-		String easyTest = "Mike made mellow music with his new microphone";
-		String hardTest = "Mike! ,made$ %mellow/music wi(th his new ,microphone.";
+		StringAnalyzer stringAnalyzer = new StringAnalyzer();
 
-		//Possible patterns
-		//String splited[] = source_.split("\\W");
-		//String splited[] = source_.split("[a-zA-Z]");
-		//String spl_[] = easyStr_.split(" ");
+		String example1 = "Mike made mellow music with his new microphone";
+		System.out.println("Analyzing " + example1);
+		stringAnalyzer.Initialize(example1);
+		stringAnalyzer.Analyze();
+		stringAnalyzer.PrintResults();
 
-		//Easy one
-		Stream<String> easyStream = Stream.of(easyTest.split(" "));
+		String example2 = "Yarvis yanked his ankle at yoga, and Yolanda yelled out in surprise.";
+		System.out.println("Analyzing " + example2);
+		stringAnalyzer.Initialize(example2);
+		stringAnalyzer.Analyze();
+		stringAnalyzer.PrintResults();
 
-		long counter = easyStream.count();
-		System.out.println("Total words: " + counter);
+		System.out.println("Extra TESTS");
+		String extra = "ab ac ad ae af, ax. A, j39i40 3";
+		System.out.println("Analyzing " + extra);
+		stringAnalyzer.Initialize(extra);
+		stringAnalyzer.Analyze();
+		stringAnalyzer.PrintResults();
+		//only one character by 'word'
+		extra = "a b c d e f g h i";
+		System.out.println("Analyzing " + extra);
+		stringAnalyzer.Initialize(extra);
+		stringAnalyzer.Analyze();
+		stringAnalyzer.PrintResults();
 
-		//easyStream.forEach(s-> System.out.println(s));
+		//no azAZ characters at all
+		extra = "1 2 3 4 5";
+		System.out.println("Analyzing " + extra);
+		stringAnalyzer.Initialize(extra);
+		stringAnalyzer.Analyze();
+		stringAnalyzer.PrintResults();
 
+		//empty string
+		extra = "";
+		System.out.println("Analyzing " + extra);
+		stringAnalyzer.Initialize(extra);
+		stringAnalyzer.Analyze();
+		stringAnalyzer.PrintResults();
+		//only one word
+		extra = "house";
+		System.out.println("Analyzing " + extra);
+		stringAnalyzer.Initialize(extra);
+		stringAnalyzer.Analyze();
+		stringAnalyzer.PrintResults();
 	}
 
 }
